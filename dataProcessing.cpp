@@ -110,7 +110,7 @@ bool stob(string s){
 //    <your comments here>
 //---------------------- **
 unsigned int getDataType(string garbage){ //done 
-    // YOUR CODE HERE 
+   
     if(isInteger(garbage)==true){
         return INT; //returns int after chechking 
     }
