@@ -139,13 +139,9 @@ unsigned int getDataType(string garbage){ //done
 //    <your comments here>
 //---------------------- **
 dataElementBase::dataElementBase(unsigned short dt){ //done
-    // YOUR CODE HERE
-    dataType=dt;
-    // garbagePile *temp=new garbagePile();
-    // dataElementBase current=new dataElementBase(); 
-    // current.dataType=dt; //new data eleement 
-    // temp.head=current; 
-    
+  
+    //set dataType
+    dataType=dt; 
 }
 
 // ---------------------
@@ -153,7 +149,7 @@ dataElementBase::dataElementBase(unsigned short dt){ //done
 //    <your comments here>
 //---------------------- **
 dataElementBase::dataElementBase(const dataElementBase& copy){ //done
-    // YOUR CODE HERE
+  
     
     this->dataType=copy.dataType; //asignee data type of the copy to this data type  
     this->next=nullptr;
@@ -165,25 +161,9 @@ dataElementBase::dataElementBase(const dataElementBase& copy){ //done
 //    <your comments here>
 //---------------------- **
 void dataElementBase::operator=(const dataElementBase& copy){
-    // YOUR CODE HERE
+   
     //delete dataType;
-    //dataType = NULL; 
-    //if(this != copy.dataType){
-    // if(head!=nullptr){
-    //this->dataType=*new unsigned short; 
     this->dataType=copy.dataType; //assigne the copy 
-    // this->next=nullptr;
-    // this->prev=nullptr;
-    // }
-    // const dataElementBase *temp=nullptr;
-    // this->dataType =copy.dataType;   
-    // while (temp!=nullptr)
-    // {
-    // this->dataType=dataElementBase::deepCopyDataElement( temp  );
-    // this->next=nullptr;
-    // this->prev=nullptr;
-    // temp=temp->next; 
-    // }
     
 }
 
@@ -226,7 +206,7 @@ dataElementBase *dataElementBase::getPrev() const{
 //    <your comments here>
 //---------------------- **
 void dataElementBase::link(dataElementBase *node){
-    // YOUR CODE HERE
+   
     this->next=node; 
     if(node!=nullptr)
     {
@@ -312,7 +292,6 @@ short dataElementBase::compare(dataElementBase *deb){
 //    <your comments here>
 //---------------------- **
 dataElementBase* dataElementBase::getNewDataElement(unsigned short dataType, string data){
-    // YOUR CODE HERE
     
     //recive aa data type and conver it into new data eleements to match 
     switch(dataType){
@@ -339,7 +318,7 @@ dataElementBase* dataElementBase::getNewDataElement(unsigned short dataType, str
         default:
         return nullptr; 
     }
-     // Students may want to replace
+
 }
 
 // ---------------------
@@ -347,7 +326,7 @@ dataElementBase* dataElementBase::getNewDataElement(unsigned short dataType, str
 //    <your comments here> almost finshed 
 //---------------------- **
 dataElementBase* dataElementBase::deepCopyDataElement(dataElementBase *deb){
-    // YOUR CODE HERE
+    
     //check in the datatype is a mathc and return it ususing static allocation 
     if(deb!= nullptr){
         
@@ -381,15 +360,12 @@ dataElementBase* dataElementBase::deepCopyDataElement(dataElementBase *deb){
 //    <your comments here>
 //---------------------- **
 void dataElementBase::swap(dataElementBase* A, dataElementBase* B){//redo 
-    // YOUR CODE HERE            //left=A        //right=B
+    //left=A        //right=B
     dataElementBase* tempAn =A->next;
     dataElementBase* tempBn=B->next;
     dataElementBase *tempAp=A->prev;
     dataElementBase *tempBp=B->prev; 
     
-    // if(A->next==nullptr || A->prev == nullptr 
-    //|| B->next ==nullptr || B->prev==nullptr) 
-    //     return;
         //if the data procedes one another 
     if(A->next == B && B->prev ==A){
         if(A->prev != nullptr)
@@ -470,7 +446,6 @@ void dataElement<t>::printElement(ostream& out) const{
 //    <your comments here>
 //---------------------- **
 garbagePile::garbagePile(){
-    // YOUR CODE HERE
     head=nullptr;
     tail=nullptr; 
     size=0; 
@@ -481,7 +456,6 @@ garbagePile::garbagePile(){
 //    <your comments here>
 //---------------------- **
 garbagePile::garbagePile(const garbagePile &copy){
-    // YOUR CODE HERE
     head=nullptr;
     tail=nullptr;
     size=0; 
@@ -495,7 +469,7 @@ garbagePile::garbagePile(const garbagePile &copy){
 //    <your comments here>
 //---------------------- **
 void garbagePile::operator=(const garbagePile &copy){
-    // YOUR CODE HERE
+
     
     if(head!=nullptr){
         clearGarbagePile(); 
@@ -521,7 +495,7 @@ void garbagePile::operator=(const garbagePile &copy){
 //    <your comments here>
 //---------------------- **
 garbagePile::~garbagePile(){
-    // YOUR CODE HERE
+    //set opject to access delete function
     this->clearGarbagePile(); 
 }
 
@@ -530,7 +504,7 @@ garbagePile::~garbagePile(){
 //    <your comments here>
 //---------------------- **
 void garbagePile::addItem(string garbage){
-    // YOUR CODE HERE
+ 
     size+=1; 
     //get data and convert it to temp using function 
     dataElementBase *temp=dataElementBase::getNewDataElement(getDataType(garbage),garbage);  
@@ -550,7 +524,7 @@ void garbagePile::addItem(string garbage){
 //    <your comments here>
 //---------------------- **
 dataElementBase *garbagePile::operator[](unsigned int index){
-    // YOUR CODE HERE
+ 
     //head is assigned to temp and nodes that come next 
     dataElementBase *temp=this->head;
      for(unsigned int i=0; i<index; i++){
@@ -565,7 +539,7 @@ dataElementBase *garbagePile::operator[](unsigned int index){
 //    <your comments here>
 //---------------------- **
 void garbagePile::clearGarbagePile(){
-    // YOUR CODE HERE
+
     if(!head) { //if not head set tail ot null and return 
         size = 0;
         tail = nullptr;
@@ -578,16 +552,6 @@ void garbagePile::clearGarbagePile(){
     temp = nullptr;
     clearGarbagePile(); //recursive 
     
-    // if(head==nullptr) 
-    //     return;
-    // else{
-    //     dataElementBase *temp=head->getNext();
-     //from head on down, assigned to temp 
-    //     delete head; //delete head 
-    //     size=size-1; //range of dletion
-    //     head=temp; //assign first head as temp
-    //     clearGarbagePile(); //recall function 
-    // }
 }
 
 // ---------------------
@@ -595,7 +559,6 @@ void garbagePile::clearGarbagePile(){
 //    <your comments here>
 //---------------------- **
 void garbagePile::sort(){
-    // YOUR CODE HERE
     //bubble sort irterates through list using nested loop 
     for(unsigned int i=0; i <size-1; i++){
         for(unsigned int j=0; j<(size-i-1); j++){
@@ -623,7 +586,6 @@ void garbagePile::sort(){
 //    <your comments here>
 //---------------------- **
 ostream& operator<<(ostream& out, garbagePile gp){
-    // YOUR CODE HERE
     int num=1;
     unsigned int linkedList=0; 
     int size=gp.size+1; //modify size 
@@ -641,30 +603,6 @@ ostream& operator<<(ostream& out, garbagePile gp){
         num++; //incremant through list 
         linkedList++;
     }
-    // unsigned int newSize = (gp.size/3);
-    // dataElementBase* temp=gp.head;
-    // int sizeMod= (gp.size % 3); 
-    // if(gp.head==nullptr){
-    //     return out; 
-    // }
-    // //gp..size is to only print 3 a line 
-    // for(unsigned int i = 0; i< newSize; i++){
-    //     for(unsigned int j= 0; j < 3; j++){
-    //         temp->printElement(out);
-    //         out<<" , "; 
-    //         temp=temp->getNext(); //move to next set 
-    //     }
-    //     out<<endl; 
-    // }
-    // //condition to =only have 3 a line 
-    // if( sizeMod!=0 ){ //for the rest 
-    //    if(sizeMod == 2){ //when 2 elements are left 
-    //         temp->printElement(out);
-    //         out<<" , "; 
-    //         temp=temp->getNext();
-    //    }
-    //     temp->printElement(out);  //last elements 
-    // }
 
     return out;
 }
@@ -674,7 +612,7 @@ ostream& operator<<(ostream& out, garbagePile gp){
 //    <your comments here>
 //---------------------- **
 istream& operator>>(istream& in, garbagePile &gp){//done
-    // YOUR CODE HERE
+
     string garbage; 
     //gp.addItem(garbage); 
     getline(in, garbage); //takes in file 
